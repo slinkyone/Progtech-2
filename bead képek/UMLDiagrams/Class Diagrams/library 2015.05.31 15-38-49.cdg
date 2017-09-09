@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="library">
+  <ClassDiagramComponents>
+    <Class name="DaoManager" package="dao" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="booksDao" type="GenericDao&lt;Books&gt;" visibility="private"/>
+        <Field name="peopleDao" type="GenericDao&lt;People&gt;" visibility="private"/>
+        <Field name="borrowsDao" type="GenericDao&lt;Borrows&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getBooksDao" returnType="GenericDao&lt;Books&gt;" visibility="public"/>
+        <Method name="getPeopleDao" returnType="GenericDao&lt;People&gt;" visibility="public"/>
+        <Method name="getBorrowsDao" returnType="GenericDao&lt;Borrows&gt;" visibility="public"/>
+        <Method name="getInstance" returnType="DaoManager" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="DefaultDao" package="dao" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="CLASS" type="Class&lt;T&gt;" visibility="private" isFinal="true"/>
+        <Field name="EMF" type="EntityManagerFactory" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Class&lt;T&gt;" name="CLASS"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public"/>
+        <Method name="findById" returnType="T" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="getEntityManager" returnType="EntityManager" visibility="private"/>
+        <Method name="findEntities" returnType="List&lt;T&gt;" visibility="private">
+          <Argument type="boolean" name="all"/>
+          <Argument type="int" name="firstResult"/>
+          <Argument type="int" name="maxResult"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="GenericDao" package="dao" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Methods>
+        <Method name="create" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="T" name="entity"/>
+        </Method>
+        <Method name="findAll" returnType="List&lt;T&gt;" visibility="public"/>
+        <Method name="findById" returnType="T" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Class name="Books" package="entity" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="borrowss" type="List&lt;Borrows&gt;" visibility="private"/>
+        <Field name="author" type="String" visibility="private"/>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="ISBN" type="Integer" visibility="private"/>
+        <Field name="ev" type="Integer" visibility="private"/>
+        <Field name="bookamount" type="Integer" visibility="private"/>
+        <Field name="PROPERTY_NAMES" type="String[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAuthor" returnType="String" visibility="public"/>
+        <Method name="setAuthor" returnType="void" visibility="public">
+          <Argument type="String" name="author"/>
+        </Method>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="getISBN" returnType="Integer" visibility="public"/>
+        <Method name="setISBN" returnType="void" visibility="public">
+          <Argument type="Integer" name="ISBN"/>
+        </Method>
+        <Method name="getYear" returnType="Integer" visibility="public"/>
+        <Method name="setYear" returnType="void" visibility="public">
+          <Argument type="Integer" name="year"/>
+        </Method>
+        <Method name="getBookAmount" returnType="Integer" visibility="public"/>
+        <Method name="setBookAmount" returnType="void" visibility="public">
+          <Argument type="Integer" name="bookamount"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="get" returnType="Object" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="set" returnType="void" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Borrows" package="entity" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="people" type="People" visibility="private"/>
+        <Field name="book" type="Books" visibility="private"/>
+        <Field name="borrowdate" type="String" visibility="private"/>
+        <Field name="returndate" type="String" visibility="private"/>
+        <Field name="PROPERTY_NAMES" type="String[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getPeople" returnType="People" visibility="public"/>
+        <Method name="setPeople" returnType="void" visibility="public">
+          <Argument type="People" name="people"/>
+        </Method>
+        <Method name="getBook" returnType="Books" visibility="public"/>
+        <Method name="setBook" returnType="void" visibility="public">
+          <Argument type="Books" name="book"/>
+        </Method>
+        <Method name="getBorrowdate" returnType="String" visibility="public"/>
+        <Method name="setBorrowdate" returnType="void" visibility="public">
+          <Argument type="String" name="borrowdate"/>
+        </Method>
+        <Method name="getReturndate" returnType="String" visibility="public"/>
+        <Method name="setReturndate" returnType="void" visibility="public">
+          <Argument type="String" name="returndate"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="get" returnType="Object" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="set" returnType="void" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="People" package="entity" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="borrows" type="Borrows" visibility="private"/>
+        <Field name="borrowss" type="List&lt;Borrows&gt;" visibility="private"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="libraryID" type="Integer" visibility="private"/>
+        <Field name="PROPERTY_NAMES" type="String[]" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="void" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="getLibraryID" returnType="Integer" visibility="public"/>
+        <Method name="setLibraryID" returnType="void" visibility="public">
+          <Argument type="Integer" name="libraryID"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="object"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="get" returnType="Object" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="set" returnType="void" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PersistentEntity" package="entity" visibility="public" isAbstract="true" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="id" type="Integer" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getId" returnType="Integer" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="Integer" name="id"/>
+        </Method>
+        <Method name="get" returnType="Object" visibility="public" isAbstract="true">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="set" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="int" name="columnIndex"/>
+          <Argument type="Object" name="value"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BooksFrame" package="gui" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="table" type="JTable" visibility="private"/>
+        <Field name="toolBar" type="JPanel" visibility="private"/>
+        <Field name="addBooks" type="JButton" visibility="private"/>
+        <Field name="removeBooks" type="JButton" visibility="private"/>
+        <Field name="addPeople" type="JButton" visibility="private"/>
+        <Field name="removePeople" type="JButton" visibility="private"/>
+        <Field name="addBorrowsbutton" type="JButton" visibility="private"/>
+        <Field name="removeBorrowsbutton" type="JButton" visibility="private"/>
+        <Field name="selectionListener" type="ListSelectionListener" visibility="private"/>
+        <Field name="addBooksAction" type="ActionListener" visibility="private"/>
+        <Field name="removeBooksAction" type="ActionListener" visibility="private"/>
+        <Field name="addPeopleAction" type="ActionListener" visibility="private"/>
+        <Field name="removePeopleAction" type="ActionListener" visibility="private"/>
+        <Field name="addBorrowsAction" type="ActionListener" visibility="private"/>
+        <Field name="removeBorrowsAction" type="ActionListener" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initFrame" returnType="void" visibility="private"/>
+        <Method name="initTable" returnType="void" visibility="private"/>
+        <Method name="initTable2" returnType="void" visibility="private"/>
+        <Method name="initTable3" returnType="void" visibility="private"/>
+        <Method name="initButtons" returnType="void" visibility="private"/>
+        <Method name="initToolBar" returnType="void" visibility="private"/>
+        <Method name="fill" returnType="void" visibility="private"/>
+        <Method name="linkActionListeners" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="FrameConstants" package="gui" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="FRAME_TITLE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FRAME_WIDTH" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="FRAME_HEIGHT" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="TABLE_WIDTH" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="TABLE_HEIGHT" type="Integer" visibility="public" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="BooksCreator" package="gui.helper" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="NAME_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="AUTHOR_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ISBN_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="AMOUNT_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="YEAR_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="book" type="Books" visibility="private"/>
+        <Field name="invalid" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="preparation" returnType="BooksCreator" visibility="public" isStatic="true"/>
+        <Method name="withTitle" returnType="BooksCreator" visibility="public"/>
+        <Method name="withAuthor" returnType="BooksCreator" visibility="public"/>
+        <Method name="withISBN" returnType="BooksCreator" visibility="public"/>
+        <Method name="withYear" returnType="BooksCreator" visibility="public"/>
+        <Method name="withAmount" returnType="BooksCreator" visibility="public"/>
+        <Method name="build" returnType="Books" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BorrowsCreator" package="gui.helper" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="borrows" type="Borrows" visibility="private"/>
+        <Field name="invalid" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="preparation" returnType="BorrowsCreator" visibility="public" isStatic="true"/>
+        <Method name="withPeople" returnType="BorrowsCreator" visibility="public">
+          <Argument type="People" name="people"/>
+        </Method>
+        <Method name="withBooks" returnType="BorrowsCreator" visibility="public">
+          <Argument type="Books" name="books"/>
+        </Method>
+        <Method name="withBorrowdate" returnType="BorrowsCreator" visibility="public">
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="withReturndate" returnType="BorrowsCreator" visibility="public">
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="build" returnType="Borrows" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PeopleCreator" package="gui.helper" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="NAME_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ADDRESS_TEXT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="people" type="People" visibility="private"/>
+        <Field name="invalid" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="preparation" returnType="PeopleCreator" visibility="public" isStatic="true"/>
+        <Method name="withName" returnType="PeopleCreator" visibility="public"/>
+        <Method name="withAddress" returnType="PeopleCreator" visibility="public"/>
+        <Method name="withlibraryID" returnType="PeopleCreator" visibility="public"/>
+        <Method name="build" returnType="People" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GenericTableModel" package="gui.model" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="items" type="List&lt;T&gt;" visibility="private"/>
+        <Field name="DAO" type="GenericDao&lt;T&gt;" visibility="private" isFinal="true"/>
+        <Field name="PROPERTY_NAMES" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="GenericDao&lt;T&gt;" name="DAO"/>
+          <Argument type="String[]" name="PROPERTY_NAMES"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getRowCount" returnType="int" visibility="public"/>
+        <Method name="getColumnCount" returnType="int" visibility="public"/>
+        <Method name="getValueAt" returnType="Object" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="setValueAt" returnType="void" visibility="public">
+          <Argument type="Object" name="aValue"/>
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="isCellEditable" returnType="boolean" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="getColumnClass" returnType="Class&lt;?&gt;" visibility="public">
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="getColumnName" returnType="String" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="getEntity" returnType="T" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+        </Method>
+        <Method name="addEntity" returnType="void" visibility="public">
+          <Argument type="T" name="item"/>
+        </Method>
+        <Method name="removeEntity" returnType="void" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Library" package="library" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="gui.helper.BorrowsCreator" target="gui.helper.BorrowsCreator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="DAO" source="gui.model.GenericTableModel" target="dao.GenericDao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="borrowss" source="entity.Books" target="entity.Borrows" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Borrows&gt;"/>
+    <IsRelation name="is" source="entity.Borrows" target="entity.PersistentEntity"/>
+    <HasRelation name="borrows" source="entity.People" target="entity.Borrows" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.helper.PeopleCreator" target="entity.People" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.helper.BooksCreator" target="gui.helper.BooksCreator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.DaoManager" target="entity.People" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="borrowss" source="entity.People" target="entity.Borrows" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Borrows&gt;"/>
+    <HasRelation name="book" source="gui.helper.BooksCreator" target="entity.Books" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="borrows" source="gui.helper.BorrowsCreator" target="entity.Borrows" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="entity.People" target="entity.PersistentEntity"/>
+    <HasRelation name="book" source="entity.Borrows" target="entity.Books" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="entity.Borrows" target="entity.People" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="entity.Books" target="entity.PersistentEntity"/>
+    <HasRelation name="peopleDao" source="dao.DaoManager" target="entity.People" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.DaoManager" target="entity.Borrows" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.helper.BooksCreator" target="entity.Books" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="booksDao" source="dao.DaoManager" target="entity.Books" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="borrowsDao" source="dao.DaoManager" target="entity.Borrows" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="people" source="gui.helper.PeopleCreator" target="entity.People" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.DaoManager" target="entity.Books" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.helper.BorrowsCreator" target="entity.Borrows" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="dao.DefaultDao" target="dao.GenericDao"/>
+    <UseRelation source="entity.Borrows" target="entity.Books" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="people" source="entity.Borrows" target="entity.People" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.helper.PeopleCreator" target="gui.helper.PeopleCreator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dao.DaoManager" target="dao.DaoManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
